@@ -45,7 +45,26 @@ router.delete("/:id", (req, res) => {
     
 })
 
+router.post("/:thoughtId/reactions", (req, res) => {
+    Thought.create({
+        thoughtText: req.body.thoughtText,
+        username: req.body.username,
+        userId: req.body.userId
+    })
+    .then(results => {
+        res.json(results)
+    })
+})
 
-
+router.post("/:thoughtId/reactions", (req, res) => {
+    Thought.create({
+        thoughtText: req.body.thoughtText,
+        username: req.body.username,
+        userId: req.body.userId
+    })
+    .then(results => {
+        res.json(results)
+    })
+})
 
 module.exports = router;

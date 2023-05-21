@@ -44,6 +44,12 @@ router.delete("/:id", (req, res) => {
     
 })
 
+router.post("/:userId/friends/:friendId", (req, res) => {
+    
+})
+
+router.post()
+
 
 
 
