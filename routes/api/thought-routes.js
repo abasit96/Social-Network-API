@@ -57,7 +57,7 @@ router.post("/:thoughtId/reactions", (req, res) => {
 })
 
 router.post("/:thoughtId/reactions", (req, res) => {
-    Thought.create({
+    Thought.delete({
         thoughtText: req.body.thoughtText,
         username: req.body.username,
         userId: req.body.userId

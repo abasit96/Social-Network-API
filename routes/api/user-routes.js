@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const User = require("../../models/user")
+const User = require("../../../models/user")
 
 
 router.get("/", (req, res) => {
@@ -45,7 +45,13 @@ router.delete("/:id", (req, res) => {
 })
 
 router.post("/:userId/friends/:friendId", (req, res) => {
-    
+    $push.create({
+        username: req.body.username,
+        email: req.body.email
+    })
+    .then(results => {
+        res.json(results)
+    })
 })
 
 router.post()
