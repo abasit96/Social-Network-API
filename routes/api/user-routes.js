@@ -1,62 +1,59 @@
 const router = require("express").Router();
-const User = require("../../../models/user")
 
+const {
+    getAllUsers, 
+    findUserById, 
+    createUser, 
+    updateUser, 
+    deleteUser,
+    addFriend,
+    removeFriend
+} = require("../../controllers/user-controller")
 
-router.get("/", (req, res) => {
-    User.find({})
-    .then(results => {
-        res.json(results)
-    })
-})
+router.get("/", getAllUsers)
 
-router.get("/:id", (req, res) => {
-    User.findById(req.params.id)
-    .then(results => {
-        res.json(results)
-    })
-})
+router.get("/:id", findUserById)
 
-router.post("/", (req, res) => {
-    User.create({
-        username: req.body.username,
-        email: req.body.email
-    })
-    .then(results => {
-        res.json(results)
-    })
-})
+router.post("/", createUser)
 
-router.put("/:id", (req, res) => {
-    User.findByIdAndUpdate(
-        req.params.id,
-        req.body
-    )
-    .then(results => {
-        res.json(results)
-    })
-})
+router.put("/:id", updateUser )
 
-router.delete("/:id", (req, res) => {
-    User.findByIdAndDelete(req.params.id)
-    .then(results => {
-        res.json(results)
-    })
-    
-})
+router.delete("/:id", deleteUser )
 
-router.post("/:userId/friends/:friendId", (req, res) => {
-    $push.create({
-        username: req.body.username,
-        email: req.body.email
-    })
-    .then(results => {
-        res.json(results)
-    })
-})
+// adding friend
+router.post("/:userId/friends/:friendId", addFriend)
 
-router.post()
+// removing a friend
+router.delete("/:userId/friends/:friendId", removeFriend)
+
+module.exports = router;
 
 
 
 
+
+
+
+
+
+
+
+
+// const {
+//   getUsers,
+//   getSingleUser,
+//   createUser,
+//   updateUser,
+//   deleteUser,
+//   addFriend,
+//   removeFriend,
+// } = require('../../controllers/user-controller');
+
+// // /api/Thought
+// router.route('/').get(getUsers).post(createUser);
+
+// // /api/Thought/:ThoughtId
+// router
+//   .route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
+// router.route('/:userId/friends/:friendId').post(addFriend).delete(removeFriend);
 module.exports = router;

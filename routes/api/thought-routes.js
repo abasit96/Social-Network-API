@@ -1,70 +1,72 @@
 const router = require("express").Router();
-const Thought = require("../../models/thought")
+const {
+    getThoughts, 
+    getSingleThought, 
+    createThought, 
+    updateThought, 
+    deleteThought,
+    addReaction,
+    removeReaction,
+} = require("../../controllers/thought-controller")
 
+router.get("/", getThoughts)
 
-router.get("/", (req, res) => {
-    Thought.find({})
-    .then(results => {
-        res.json(results)
-    })
-})
+router.get("/:id", getSingleThought)
 
-router.get("/:id", (req, res) => {
-    Thought.findById(req.params.id)
-    .then(results => {
-        res.json(results)
-    })
-})
+router.post("/", createThought)
 
-router.post("/", (req, res) => {
-    Thought.create({
-        thoughtText: req.body.thoughtText,
-        username: req.body.username,
-        userId: req.body.userId
-    })
-    .then(results => {
-        res.json(results)
-    })
-})
+router.put("/:id", updateThought)
 
-router.put("/:id", (req, res) => {
-    Thought.findByIdAndUpdate(
-        req.params.id,
-        req.body
-    )
-    .then(results => {
-        res.json(results)
-    })
-})
+router.delete("/:id", deleteThought)
 
-router.delete("/:id", (req, res) => {
-    Thought.findByIdAndDelete(req.params.id)
-    .then(results => {
-        res.json(results)
-    })
-    
-})
+// add reaction
+router.post("/:thoughtId/reactions", addReaction)
 
-router.post("/:thoughtId/reactions", (req, res) => {
-    Thought.create({
-        thoughtText: req.body.thoughtText,
-        username: req.body.username,
-        userId: req.body.userId
-    })
-    .then(results => {
-        res.json(results)
-    })
-})
+// remove reaction
+router.delete("/:thoughtId/reactions/:reactionId", removeReaction )
 
-router.post("/:thoughtId/reactions", (req, res) => {
-    Thought.delete({
-        thoughtText: req.body.thoughtText,
-        username: req.body.username,
-        userId: req.body.userId
-    })
-    .then(results => {
-        res.json(results)
-    })
-})
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const {
+//   getThoughts,
+//   getSingleThought,
+//   createThought,
+//   updateThought,
+//   deleteThought,
+//   addReaction,
+//   removeReaction,
+// } = require('../../controllers/thought-controller');
+
+// // /api/Thought
+// router.route('/').get(getThoughts).post(createThought);
+
+// // /api/Thought/:ThoughtId
+// router
+//   .route('/:thoughtId').get(getSingleThought).put(updateThought).delete(deleteThought);
+// router.route('/:thoughtId/reactions').post(addReaction);
+// router.route('/:thoughtId/reactions/:reactionId').delete(removeReaction);
+// module.exports = router;
