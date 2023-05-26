@@ -50,7 +50,7 @@ const addReaction = (req, res) => {
         req.params.thoughtId,
         {
             $push: {
-                reactions: req.params.reactionId
+                reactions: req.body
             }
         }
     ).then(results => {

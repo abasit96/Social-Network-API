@@ -20,7 +20,7 @@ router.put("/:id", updateThought)
 router.delete("/:id", deleteThought)
 
 // add reaction
-router.post("/:thoughtId/reactions/:reactionId", addReaction)
+router.post("/:thoughtId/reactions", addReaction)
 
 // remove reaction
 router.delete("/:thoughtId/reactions/:reactionId", removeReaction )
