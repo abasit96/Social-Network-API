@@ -11,7 +11,6 @@ Screenshots:
 
 ## Table of Contents
 * [Description](#description)
-* [Demonstration] (#demonstration)
 * [Technologies](#technologies)
 * [Instructions](#instructions)
 * [License](#license)
