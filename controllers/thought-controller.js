@@ -50,7 +50,7 @@ const addReaction = (req, res) => {
         req.params.thoughtId,
         {
             $push: {
-                reactions: req.body
+                reactions: req.params.reactionId
             }
         }
     ).then(results => {
@@ -59,16 +59,17 @@ const addReaction = (req, res) => {
 }
 
 const removeReaction = (req, res) => {
-    Thought.findByIdAndRemove(
-        { _id: req.params.thoughtId },
+    Thought.findByIdAndUpdate(
+        req.params.thoughtId,
         {
             $pull: {
-                reactions: req.body
+                reactions: req.params.reactionId
             }
         }
     ).then(results => {
         res.json(results)
     })
+
 }
 
 module.exports = {
