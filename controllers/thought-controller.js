@@ -63,9 +63,9 @@ const removeReaction = (req, res) => {
         req.params.thoughtId,
         {
             $pull: {
-                reactions: req.params.reactionId
+                reactions: { _id: req.params.reactionId }
             }
-        }
+        },
     ).then(results => {
         res.json(results)
     })
