@@ -82,26 +82,3 @@ module.exports = {
     removeReaction,
 }
 
-// router.post("/:thoughtId/reactions", (req, res) => {
-//     Thought.create({
-//         thoughtText: req.body.thoughtText,
-//         username: req.body.username,
-//         userId: req.body.userId
-//     })
-//     .then(results => {
-//         res.json(results)
-//     })
-// })
-
-// router.post("/:thoughtId/reactions", (req, res) => {
-//     Thought.delete({
-//         thoughtText: req.body.thoughtText,
-//         username: req.body.username,
-//         userId: req.body.userId
-//     })
-//     .then(results => {
-//         res.json(results)
-//     })
-// })
-
-// module.exports = router;

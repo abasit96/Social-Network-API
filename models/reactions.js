@@ -13,7 +13,6 @@ const reactionSchema = new Schema ({
     createdAt: {
         type: Date,
         default: Date.now,
-        // this where the getter method will be put
 
 
     },
